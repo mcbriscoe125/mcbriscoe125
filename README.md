@@ -3,7 +3,7 @@
 <!--
 **mcbriscoe125/mcbriscoe125** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-Here are some ideas to get you started:
+This is my GitHub page.  I am curebtly studying full stack Software development.
 
 - 🔭 I’m currently working on ...
 - 🌱 I’m currently learning ...

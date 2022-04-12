@@ -1,0 +1,2753 @@
+C-Sharp functions Exercises
+
+Write A Function To Calculate The Tip Amount  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            decimal Tip(decimal bill, decimal percent)
+            {
+                decimal tipAmount = bill * percent;
+                return tipAmount;
+            }
+
+            decimal tip = Tip(33.00m, .15m);
+            Console.WriteLine($"The tip is: {tip} ");
+        }
+    }
+}
+
+==================================================================================
+
+Format A Phone Number  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string phoneNum = "13019778892" ;
+            string sub1 = phoneNum[0] + "-";
+            string sub2 = "";
+            for (int i=1; i <=3; i++)
+            {
+                sub2 += phoneNum[i];
+            }
+            sub2 = "(" + sub2 + ")" + "-";
+            string sub3 = "";
+            for(int i = 4; i <= 6; i++)
+            {
+                sub3 += phoneNum[i];
+            }
+            sub3 = sub3 + "-";
+            string sub4 = "";
+            for(int i = 7; i <= 10; i++)
+            {
+                sub4 += phoneNum[i];
+            }
+            string sub5 = sub1 + sub2 + sub3 + sub4;
+            
+            Console.WriteLine($"The formatted sting is:  {sub5}");
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private enum NumberFormat
+        {
+            Dashes,
+            Parentheses
+        }
+
+        private static void Main(string[] args)
+        {
+            string phoneNumber = "10123456789";
+
+            string phoneNumberWithDashes = FormatPhoneNumber(NumberFormat.Dashes, phoneNumber);
+
+            Console.WriteLine($"Phone number with Dashes : {phoneNumberWithDashes}");
+
+            string phoneNumberWithParentheses = FormatPhoneNumber(NumberFormat.Parentheses, phoneNumber);
+
+            Console.WriteLine($"Phone number with Parentheses : {phoneNumberWithParentheses}");
+
+            string shortPhoneNumber = FormatPhoneNumber(NumberFormat.Parentheses, "12344444");
+
+            Console.WriteLine($"Short phone number : {shortPhoneNumber}");
+
+            string internationalNumber = FormatPhoneNumber(NumberFormat.Parentheses, "886466423221");
+
+            Console.WriteLine($"International number with dashes : {internationalNumber}");
+
+        }
+
+        private static string FormatPhoneNumber(NumberFormat numberFormat, string phoneNumber)
+        {
+            if (!phoneNumber.StartsWith('1') || phoneNumber.Length != 11)
+            {
+                return phoneNumber;
+            }
+
+            string formattedPhoneNumber = "";
+            int counter = 0;
+
+            if (numberFor5 mat == NumberFormat.Dashes)
+            {
+                foreach (char c in phoneNumber)
+                {
+                    if (counter == 1 || counter == 4 || counter == 7)
+                    {
+                        formattedPhoneNumber += "-";
+                    }
+                    formattedPhoneNumber += c.ToString();
+                    counter++;
+                }
+            }
+
+            if (numberFormat == NumberFormat.Parentheses)
+            {
+                foreach (char c in phoneNumber)
+                {
+                    if (counter == 0)
+                    {
+                        formattedPhoneNumber += "+";
+                    }
+                    if (counter == 1)
+                    {
+                        formattedPhoneNumber += "(";
+                    }
+
+                    if (counter == 4)
+                    {
+                        formattedPhoneNumber += ")";
+                    }
+
+                    if (counter == 7)
+                    {
+                        formattedPhoneNumber += "-";
+                    }
+
+                    formattedPhoneNumber += c.ToString();
+
+                    counter++;
+                }
+            }
+
+            return formattedPhoneNumber;
+        }
+    }
+}
+
+============================================================================================================================
+
+Reverse A Word  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+           private static void Main(string[] args)
+        {
+            string word = "funny";
+            string word2 = ReverseWord(word);
+
+            string ReverseWord(string word1)
+            {
+                string revWord = "";
+                for(int i = (word1.Length -1); i >= 0; i--)
+                {
+                   revWord += word1[i];
+                }
+                return revWord;
+            }
+            Console.WriteLine(word);
+            Console.WriteLine(word2);
+        }
+
+       
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string originalWord = "Developer";
+            string reversedWord = ReverseWord(originalWord);
+            Console.WriteLine($"The reversed word : is {reversedWord}");
+        }
+
+
+        static string ReverseWord(string word)
+        {
+            string reversedWord = "";
+
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                reversedWord += word[i].ToString();
+            }
+
+            return reversedWord;
+        }
+    }
+}
+
+=======================================================================================================================
+
+Repeating Letters N Times  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {
+            string word = "Stinky";
+            int count = 5;
+            string word2 = "";
+
+            word2 = LetterMultiple(word, count);
+
+            string LetterMultiple(string word1, int count)
+            {
+                string str1 = "";
+                for (int i = 0; i < (word.Length - 1); i++)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        str1 += word[i];
+                    }
+                }
+
+                return str1;
+            }
+
+                Console.WriteLine(word2);
+        }
+        
+    }
+            
+     
+}
+        
+Solution provided by the course:
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string wordOne = "pet";
+
+            string mutatedWord = LetterMultify(wordOne, 5);
+
+            Console.WriteLine($"Word multified : {mutatedWord}");
+
+            string wordTwo = "John";
+            mutatedWord = LetterMultify(wordTwo, 3);
+
+            Console.WriteLine($"Word multified : {mutatedWord}");
+        }
+
+        public static string LetterMultiple(char letter, int value)
+        {
+            string multifiedWord = "";
+
+            
+            for (int i = 0; i < value; i++)
+            {
+                multifiedWord += letter;
+            }
+            
+
+            return multifiedWord;
+        }
+    }
+}
+
+===========================================================================================================================
+
+Retrieve The Min And Max Values From An Array  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {
+            int[] valueList = new[] { 12, 34, 43, 45, 66, 76, 87, 9, 101, 33, 88 };
+            
+            int minVal = MinimumValue(valueList); 
+            int maxVal = MaximumValue(valueList);
+
+            int MinimumValue(int[] list)
+            {
+                int minVal = list[0];
+                foreach (int digit in list)
+                {
+                    if (digit < minVal)
+                    {
+                        minVal = digit;
+                    }
+                }
+                return minVal;
+            }
+
+            int MaximumValue(int[] list)
+            {
+                int maxVal = 0;
+                foreach (int digit in list)
+                {
+                    if (digit > maxVal)
+                    {
+                        maxVal = digit;
+                    }
+                }
+                return maxVal;
+            }
+
+            Console.WriteLine($"The minimum value is:  {minVal} an the maximun value is:  {maxVal}");
+        }
+        
+    }
+            
+     
+}
+        
+            
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int[] minMaxArray = MinMaxArrayGenerator(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+
+            int min = minMaxArray[0];
+            int max = minMaxArray[1];
+
+            Console.WriteLine($"The Min value of the array is {min}");
+            Console.WriteLine($"The Max value of the array is {max}");
+        }
+
+        private static int[] MinMaxArrayGenerator(int[] values)
+        {
+            int min = int.MaxValue;
+            int max = int.MinValue;
+
+            foreach (int value in values)
+            {
+                if (value > max)
+                {
+                    max = value;
+                }
+
+                if (value < min)
+                {
+                    min = value;
+                }
+            }
+
+            return new int[] { min, max };
+        }
+    }
+}
+
+=============================================================================================================================
+
+Check If A String A Palindrome  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {
+            string word = "toilet";
+            bool isTrue = IsPalindrome(word);
+
+            bool IsPalindrome(string word1)
+            {
+                string word2 = "";
+                for (int i = (word1.Length - 1); i >= 0; i--)
+                {
+                    word2 += word1[i];
+                }
+                if (word2 == word1)
+                {
+                    Console.WriteLine($"{word1} is a palindrome");
+                    return true;
+                } 
+                 else
+                {
+                    Console.WriteLine($"{word1} is not a palindrome");
+                    return false;
+                }
+                
+            }
+        }
+    }
+}
+        
+   
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string notPalindrome = "potato";
+            bool result = IsPalindrome(notPalindrome);
+            Console.WriteLine($"Is {notPalindrome} a palindrome : {result}");
+
+            string palindrome = "mom";
+            result = IsPalindrome(palindrome);
+            Console.WriteLine($"Is {palindrome} a palindrome : {result}");
+        }
+
+        private static bool IsPalindrome(string word)
+        {
+            char[] array = word.ToCharArray();
+
+            Array.Reverse(array);
+
+            string reversedWord = new(array);
+
+            return reversedWord.Equals(word);
+        }
+    }
+}
+
+============================================================================================================================
+
+Count Letter Occurrences Of A Letter In A Sentence  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Count Letter Occurrences Of A Letter In A Sentence  
+            string word = "toilet";
+            char letter = 't';
+
+            int letterCount = LetterCount(word, letter);
+
+            Console.WriteLine($"The number of occurences of {letter} in {word} is {letterCount}");
+            
+            static int LetterCount(string word1, char letter1)
+            {
+                int counter = 0;
+                foreach (char let in word1)
+                {
+                    if (let == letter1)
+                    {
+                        counter += 1;
+                    }
+                }
+
+                return counter;
+            }
+
+            
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string sentence = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
+            char letter = 'i';
+
+            int numberOfLetterOccurences = GetNumberOfLetterOccurrencesInSentence(sentence, letter);
+
+            Console.WriteLine($"{letter} occurs : {numberOfLetterOccurences} times in this sentence.");
+        }
+
+        private static int GetNumberOfLetterOccurrencesInSentence(string sentence, char letter)
+        {
+            int totalLetters = 0;
+
+            foreach (char value in sentence)
+            {
+                totalLetters += value == letter ? 1 : 0;
+            }
+
+            return totalLetters;
+        }
+    }
+}
+
+================================================================================================================================
+
+Calculate The Mean Of An Enumerable  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Calculate The Mean Of An Enumerable  
+            int[] array1 = new int[] { 1, 2, 3, 34, 5, 6, 7 };
+
+            Console.WriteLine($"The mean is {GetMean(array1)}");
+
+            static decimal GetMean(int[] group1)
+            { 
+                decimal mean = 0.0m;
+                for (int i = 0; i <= (group1.Length - 1); i++)
+                {
+                    mean += group1[i];
+                }
+                return (mean / group1.Length);
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           List<int> numbers = new() { 1, 15, 2, 425, 2633, 26, 26231, 62, 62, 452, 422, 432 };
+           double mean = GetMeanFromIEnumerable(numbers);
+
+           Console.WriteLine($"The mean of the list is {mean}");
+       }
+
+       private static double GetMeanFromIEnumerable(IEnumerable<int> list)
+       {
+           int sum = 0;
+           int length = 0;
+
+           foreach (int value in list)
+           {
+               sum += value;
+               length += 1;
+           }
+           double mean = sum / length;
+           return mean;
+       }
+   }
+}
+
+===========================================================================================================================
+
+
+Convert An Age To Days  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Convert An Age To Days  
+
+            int age = 50;
+
+            Console.WriteLine($"The number of days for age {age} is {AgeToDays(age)}");
+           int AgeToDays(int age1)
+            {
+                return (age1 * 365);
+            }
+
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int age = 32;
+            double convertedAge = ConvertAgeToDays(age);
+            Console.WriteLine($"You are {convertedAge} days old!");
+        }
+
+        private static double ConvertAgeToDays(int age)
+        {
+            double convertedAgeToDays = age * 365.25;
+            return convertedAgeToDays;
+        }
+    }
+}
+
+===========================================================================================================================
+
+Compute The Absolute Sum Of An Array  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Compute The Absolute Sum Of An Array   
+
+            int[] numGroup = new[] { 12, 13, 23, 25, 45, 65, 7, 58, 99, 100 };
+
+            Console.WriteLine($" The absolute sum is {ArraySum(numGroup)}");
+
+            int ArraySum(int[] group1)
+            {
+                int sum = 0;
+                for (int i = 0; i < group1.Length; i++)
+                {
+                    sum += group1[i];
+                }
+
+                return sum;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+
+            int[] integerArr = new int[] { 1, 2, 3, -4, -235, -6, 7 };
+            int sum = AbsoluteSummation(integerArr);
+
+            Console.WriteLine($"The absolute summation of the array is {sum}");
+        }
+
+        private static int AbsoluteSummation(int[] values)
+        {
+            int sum = 0;
+            foreach (int value in values)
+            {
+                sum += Math.Abs(value);
+            }
+
+            return sum;
+        }
+    }
+}
+
+======================================================================================================================
+
+Is Number Even  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Is Number Even  
+
+            int num = 7;
+
+            bool isEven = IsNumEven(num);
+
+            bool IsNumEven(int num1)
+            {
+                if (num1 % 2 == 0)
+                {
+                    Console.WriteLine($"The number {num1} is even");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"The number {num1} is not even");
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int number = 55;
+            bool expression = IsNumberEven(number);
+            string verbiage = expression ? "is even." : "is not even.";
+
+            Console.WriteLine($"{number} {verbiage}");
+        }
+
+        private static bool IsNumberEven(int number)
+        {
+            bool evaluation = false;
+
+            if (number % 2 == 0)
+            {
+                evaluation = true;
+            }
+
+            return evaluation;
+        }
+    }
+}
+
+=================================================================================================================================
+
+Is Number Odd  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Is Number Odd
+
+            int num = 8;
+
+            bool isEven = IsNumOdd(num);
+
+            bool IsNumOdd(int num1)
+            {
+                if (num1 % 2 != 0)
+                {
+                    Console.WriteLine($"The number {num1} is odd");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"The number {num1} is not odd");
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int number = 55;
+            bool expression = IsNumberEven(number);
+            string verbiage = expression ? "is odd." : "is not odd.";
+
+            Console.WriteLine($"{number} {verbiage}");
+        }
+
+        private static bool IsNumberOdd(int number)
+        {
+            bool evaluation = false;
+
+            if (number % 2 != 0)
+            {
+                evaluation = true;
+            }
+
+            return evaluation;
+        }
+    }
+}
+
+===========================================================================================================================
+
+Validate Pin  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Validate Pin
+
+            int passcode1 = 4526;
+            int passcode2 = 4568;
+
+            bool pin1 = false;
+            pin1 = IsValidPin(passcode1);
+
+            bool pin2 = false;
+            pin2 = IsValidPin(passcode2);
+
+                if (SamePin(passcode1, passcode2))
+                {
+                    Console.WriteLine($"{passcode1} is the same as {passcode2}");
+                }
+                else
+                {
+                    Console.WriteLine($"{passcode1} is not the same as {passcode2}");
+                }
+
+                bool SamePin(int pin1, int pin2)
+                {
+                    bool isSame = false;
+                    if (pin1 == pin2)
+                    {
+                        isSame = true;
+                    }
+                    else
+                    {
+                        isSame = false;
+                    }
+                    return isSame;
+                }
+            
+                bool IsValidPin(int pin)
+            {
+                bool isValid = false;
+
+                if (pin < 1000)
+                {
+                    Console.WriteLine($"The pin {pin} is not valid");
+                    isValid = false;
+                }
+                else
+                {
+                    Console.WriteLine($"The pin {pin} is valid");
+                    isValid = true;
+                }
+                    
+                return isValid;
+            }
+        }
+    }
+}
+
+
+
+
+Solution rovided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int num1 = 1000;
+           int num2 = 1000;
+           ValidatePin(num1, num2);
+       }
+
+       private static void ValidatePin(int a, int b)
+       {
+           if (a < 1000 || b < 1000)
+           {
+               Console.WriteLine("Pin not long enough");
+               return;
+           }
+           if (a == b)
+           {
+               Console.WriteLine("Pin is Valid");
+           }
+           else
+           {
+               Console.WriteLine("Pin is Invalid");
+           }
+       }
+   }
+}
+
+===============================================================================================================================
+
+ Title:
+Add Numbers  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Add Numbers
+
+            int value1 = 1234;
+            int value2 = 4567;
+
+            Console.WriteLine($"The sum of {value1} and {value2} is: {SumNums(value1, value2)} ");
+
+            int SumNums(int num1, int num2)
+            {
+                return (num1 + num2);
+            }
+        }
+    }
+}
+
+Solution provided by the course
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int num1 = 5;
+            int num2 = 10;
+            int sum = Add(num1, num2);
+            Console.WriteLine($"The sum is {sum}.");
+        }
+
+        private static int Add(int a, int b)
+        {
+            int sum = a + b;
+
+            return sum;
+        }
+    }
+}
+
+============================================================================================================================
+
+Divide Numbers
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Divide Numbers  
+
+            double value1 = 8.6;
+            double value2 = 4.2;
+
+            Console.WriteLine($"The quotient of {value1} and {value2} is: {DivideNums(value1, value2)} ");
+
+            double DivideNums(double num1, double num2)
+            {
+                double answer = (num1 / num2);
+                double roundedValue = System.Math.Round(answer, 2);
+                return roundedValue;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+namespace ConsoleApp
+namespace ConsoleApp
+{
+  internal class Program
+  {
+      private static void Main(string[] args)
+      {
+          double num1 = 10.5;
+          double num2 = 7.3;
+          double value = System.Math.Round(Divide(num1, num2), 2);
+          double roundedValue = System.Math.Round(value, 2);
+          System.Console.WriteLine($"{num1} / {num2} = {roundedValue}");
+      }
+
+      private static double Divide(double a, double b)
+      {
+          double value = a / b;
+
+          return value;
+      }
+  }
+}
+
+=========================================================================================================================
+
+Multiply numbers
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        { //  Multiply numbers
+            double num1 = 10.5;
+            double num2 = 7.3;
+            double value = System.Math.Round(MultiplyNum(num1, num2), 2);
+
+            Console.WriteLine($"The product of {num1} and {num2} is: {value} ");
+
+        }
+
+        private static double MultiplyNum(double a, double b)
+        {
+            double value = a * b;
+
+            return value;
+        }
+    }
+}
+
+Solution provided by the course:
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            double num1 = 177.15;
+            double num2 = 8234.33;
+            double value = System.Math.Round(Multiply(num1, num2), 2);
+            double roundedValue = System.Math.Round(value, 2);
+            System.Console.WriteLine($"{num1} * {num2} = {roundedValue}");
+        }
+
+        private static double Multiply(double a, double b)
+        {
+            double value = a * b;
+
+            return value;
+        }
+    }
+}
+
+=========================================================================================================================
+
+Subtract Numbers  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Subtract Numbers    
+
+            int value1 = 8234;
+            int value2 = 46346;
+
+            Console.WriteLine($"The difference of {value1} and {value2} is: {SubNums(value1, value2)} ");
+
+            decimal SubNums(int num1, int num2)
+            {
+                return (num1 - num2);
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int num1 = 1000;
+           int num2 = 1000;
+           int value = Subtract(num1, num2);
+           System.Console.WriteLine($"{num1} - {num2} = {value}");
+       }
+
+       private static int Subtract(int a, int b)
+       {
+           int value = a - b;
+
+           return value;
+       }
+   }
+}
+
+========================================================================================================================
+
+Logical AND  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Logical AND      
+
+            int value1 = 0;
+            int value2 = 1;
+
+            Console.WriteLine($"The logical AND of {value1} and {value2} is: {IsAnd(value1, value2)} ");
+
+            static bool IsAnd(int num1, int num2)
+            {
+                bool boolOne = Convert.ToBoolean(num1);
+                bool boolTwo = Convert.ToBoolean(num2);
+                return boolOne && boolTwo;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int numberOne = 1;
+            int numberTwo = 1;
+
+            bool expression = AND(numberOne, numberTwo);
+
+            Console.WriteLine(expression);
+        }
+
+        private static bool AND(int numberOne, int numberTwo)
+        {
+            bool boolNumOne = Convert.ToBoolean(numberOne);
+            bool boolNumTwo = Convert.ToBoolean(numberTwo);
+            return boolNumOne && boolNumTwo;
+        }
+    }
+}
+
+============================================================================================================================
+
+Area Of Triangle  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Area Of Triangle      
+
+            int height = 7;
+            int based = 5;
+            
+            Console.WriteLine($"The area of the triangle height {height} and base {based} is: {Area(height, based)} ");
+
+            static int Area(int num1, int num2)
+            {
+                return num1 * num2;
+            }
+        }
+    }
+}
+
+Solution providedd by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           double tBase = 10.9;
+           double tHeight = 15.5;
+           double areaOfTriangle = AreaOfTriangle(tBase, tHeight);
+
+           Console.WriteLine($"Given a base of {tBase} and a height of {tHeight} the area of the triangle is {areaOfTriangle}.");
+
+       }
+
+       private static double AreaOfTriangle(double tBase, double tHeight)
+       {
+           double area = (tHeight * tBase) / 2;
+
+           return area;
+       }
+   }
+}
+
+================================================================================================================================
+
+Calculate Kinetic Energy 
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Calculate Kinetic Energy      
+
+            int mass = 73;
+            int velocity = 54;
+
+            Console.WriteLine($"The kinetic energy of mass {mass} and velocity {velocity} is: {KineticEnrgy(mass, velocity)} ");
+
+            static double KineticEnrgy(int num1, int num2)
+            {
+                double kenergy = ((num1 * 0.5) * (num2 * num2));
+                return kenergy;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int mass = 60;
+           int velocity = 3;
+           double kineticEnergy = CalculateKineticEnergy(mass, velocity);
+
+           Console.WriteLine($"The kinetic energy given a mass of {mass} and a velocity of {velocity} is {kineticEnergy}.");
+       }
+
+       private static double CalculateKineticEnergy(int mass, int velocity)
+       {
+           double velocitySquared = Math.Pow(velocity, 2);
+           double massTimesVelocitySquared = mass * velocitySquared;
+           double kineticEnergy = .5 * massTimesVelocitySquared;
+           return kineticEnergy;
+       }
+   }
+}
+
+=============================================================================================================================
+
+Calculate Profit Margin  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Calculate Profit Margin      
+
+            double revenue = 5000.0;
+            double cost = 3500.0;
+
+            Console.WriteLine($"The profit margin of revenue {revenue} and cost {cost} is: {CalculateProfit(revenue, cost)} ");
+
+            static double CalculateProfit(double num1, double num2)
+            {
+                return (num1 - num2) / num1;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           double revenue = 100.0;
+           double cost = 30.0;
+
+           double profitMargin = CalculateProfitMargin(revenue, cost);
+           
+           Console.WriteLine($"The profit margin is {profitMargin}");
+       }
+
+       private static double CalculateProfitMargin(double revenue, double cost)
+       {
+           double profitMargin = (revenue - cost) / revenue;
+
+           return profitMargin;
+       }
+   }
+}
+
+==============================================================================================================================
+
+Calculate Volume  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Calculate Volume   width, length, heigh    
+
+            int width = 23;
+            int height = 44;
+            int length = 32;
+            
+            Console.WriteLine($"The volume of length {length} and width {width} and height {height} is: {CalculateVolume(length, width, height)} ");
+
+            static int CalculateVolume(int num1, int num2, int num3)
+            {
+                return ((num1 * num2) * num3);
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int width = 4;
+           int length = 2;
+           int height = 2;
+
+           int volume = CalculateVolume(width, length, height);
+
+           Console.WriteLine($"{volume}");
+       }
+
+       private static int CalculateVolume(int width, int length, int height)
+       {
+           int volume = width * length * height;
+           return volume;
+       }
+   }
+}
+
+===========================================================================================================================
+
+Convert Minutes To Seconds  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Convert Minutes To Seconds      
+
+            int minutes = 23;
+            
+            Console.WriteLine($"The nnumber of seconds for {minutes} minutee is: {MinutesToSeconds(minutes)} ");
+
+            static int MinutesToSeconds(int min)
+            {
+                return min * 60;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int minutes = 5;
+           int seconds = ConvertMinutesToSeconds(minutes);
+           Console.WriteLine($"{minutes} minutes is {seconds} seconds.");
+       }
+
+       private static int ConvertMinutesToSeconds(int minutes)
+       {
+           int seconds = minutes * 60;
+
+           return seconds;
+       }
+   }
+}
+
+===============================================================================================================================
+
+Convert String Number To Integer  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Convert String Number To Integer      
+
+            string value1 = "2345";
+            
+            Console.WriteLine($"The converted sting value is: {StringToInt(value1)} ");
+
+            static int StringToInt(string min)
+            {
+                int min2 = Int32.Parse(min);
+                return min2;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           string strNumber = "123444";
+
+           int number = ConvertStringNumberToInteger(strNumber);
+
+           Console.WriteLine(number);
+       }
+
+       private static int ConvertStringNumberToInteger(string strNumber)
+       {
+           return Convert.ToInt32(strNumber);
+       }
+   }
+}
+
+=========================================================================================================================
+
+Divides Evenly  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Divides Evenly        
+
+            int value1 = 66;
+            
+            Console.WriteLine($"The provided value {value1} is evenly divisibl: {IsEvenlyDivisible(value1)} ");
+
+            static bool IsEvenlyDivisible(int num)
+            {
+                if (num % 2 == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+  internal class Program
+  {
+      private static void Main(string[] args)
+      {
+          int number = 99;
+          bool expression = DividesEvenly(number);
+
+          if (expression)
+          {
+              Console.WriteLine($"{number} can be divided evenly.");
+          }
+
+          if (!expression)
+          {
+              Console.WriteLine($"{number} can not be divided evenly.");
+          }
+      }
+
+      private static bool DividesEvenly(int number)
+      {
+          bool expression = false;
+          
+          if (number % 2 == 0)
+          {
+              expression = true;
+          }
+
+          return expression;
+      }
+  }
+}
+
+=============================================================================================================================
+
+Get Absolute Value  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Get Absolute Value         
+
+            int value1 = -66;
+            
+            Console.WriteLine($"The Absolute Value of value {value1} is: {AbsoluteValue(value1)} ");
+
+            static int AbsoluteValue(int num)
+            {
+                if (num < 0)
+                {
+                    return num * -1;
+                }
+                else
+                {
+                    return num;
+                }
+            }
+        }
+    }
+}
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+  internal class Program
+  {
+      private static void Main(string[] args)
+      {
+          int negativeNumber = -999;
+          int absoluteValue = GetAbsoluteValue(negativeNumber);
+
+          Console.WriteLine(absoluteValue);
+      }
+
+      private static int GetAbsoluteValue(int negativeNumber)
+      {
+          if (negativeNumber < 0)
+          {
+              return negativeNumber * -1;
+          }
+          return negativeNumber;
+      }
+  }
+}
+
+==========================================================================================================================
+
+Get Major Version Number  
+
+	 	
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           string version = "9.8.7";
+           string majorVersionNumber = GetMajorVersionNumber(version);
+
+           Console.WriteLine($"The Major number is {majorVersionNumber}");
+       }
+
+       private static string GetMajorVersionNumber(string version)
+       {
+           string[] versionArr = version.Split(".");
+
+           string versionStr = versionArr[0];
+
+           return versionStr;
+       }
+   }
+}
+
+============================================================================================================================
+
+Logical NOT  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Logical NOT         
+
+            int num1 = 0;
+            int num2 = 1;
+            
+            Console.WriteLine($"The logical NOT of {num1} and {num2} is: {GetLogicalNot(num1, num2)} ");
+
+            static bool GetLogicalNot(int num1, int num2)
+            {
+                bool boolNum1 = Convert.ToBoolean(num1);
+                bool boolNum2 = Convert.ToBoolean(num2);
+
+                if (!boolNum1 && !boolNum2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int numberOne = 0;
+           int numberTwo = 0;
+
+           bool expression = NOT(numberOne, numberTwo);
+
+           Console.WriteLine(expression);
+       }
+
+       private static bool NOT(int numberOne, int numberTwo)
+       {
+           bool boolNumOne = Convert.ToBoolean(numberOne);
+           bool boolNumTwo = Convert.ToBoolean(numberTwo);
+           return !boolNumOne && !boolNumTwo;
+       }
+   }
+}
+
+=================================================================================================================================
+
+Get Minor Version Number  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Get Minor Version Number      
+
+            string version = "9.8.7";
+            
+            Console.WriteLine($"The minor version numbeer of {version} is: {GetMinorVersion(version)} ");
+
+            static char GetMinorVersion(string ver)
+            {
+                char minor = ver[ver.Length - 1];
+
+                return minor;
+            }
+        }
+    }
+}
+
+Solution provided by the cours:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           string version = "9.8.7";
+           string minorVersionNumber = GetMinorVersionNumber(version);
+
+           Console.WriteLine($"The Minor number is {minorVersionNumber}");
+       }
+
+       private static string GetMinorVersionNumber(string version)
+       {
+           string[] versionArr = version.Split(".");
+
+           string versionStr = versionArr[1];
+
+           return versionStr;
+       }
+   }
+}
+
+=============================================================================================================================
+
+Get Number Of Spaces  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Get Number Of Spaces        
+
+            string sentence = "The dirty bird took a birdbath";
+            
+            Console.WriteLine($"The number of spaces in {sentence} is: {GetNumOfSpaces(sentence)} ");
+
+            static int GetNumOfSpaces(string sen)
+            {
+                int count = 0;
+                for (int i = 0; i <= sen.Length - 1; i++)  
+                {
+                    if (sen[i] == ' ')
+                    count++;
+                }
+                return count;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+  internal class Program
+  {
+      private static void Main(string[] args)
+      {
+          string sentence = "Pizza ipsum dolor amet sausage bianca hand tossed, chicken pineapple pepperoni garlic ranch stuffed personal meatball. Meat lovers onions Chicago style, pan thin crust stuffed crust string cheese. Bacon & tomato melted cheese chicken wing bbq rib pepperoni pesto. Garlic pizza stuffed pizza roll large, lasagna garlic parmesan chicken wing. Banana peppers marinara extra cheese pie bbq sauce stuffed chicken wing, white pizza meatball philly chicken anchovies bacon large.";
+
+          int numberOfSpaces = GetNumberOfSpaces(sentence);
+          Console.WriteLine(numberOfSpaces);
+      }
+
+      private static int GetNumberOfSpaces(string sentence)
+      {
+          int numberOfSpaces = 0;
+
+          numberOfSpaces =  sentence.Split(" ").Length -1;
+          return numberOfSpaces;
+      }
+  }
+}
+
+==============================================================================================================================
+
+Get Patch Version Number  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] argd)
+        {  //  Get Patch Version Number          
+
+            string version = "16.8.32";
+            
+            Console.WriteLine($"The patch number in {version} is: {GetPatch(version)} ");
+
+            static string GetPatch(string ver)
+            {
+                int firstDotIndex = ver.IndexOf(".");
+                int secondDotIndex = ver.IndexOf(".", firstDotIndex + 1);
+                string patch = ver.Substring(secondDotIndex + 1);
+                return patch;
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           string version = "9.8.7";
+           string patchVersionNumber = GetPatchVersionNumber(version);
+
+           Console.WriteLine($"The Patch number is {patchVersionNumber}");
+       }
+
+       private static string GetPatchVersionNumber(string version)
+       {
+           string[] versionArr = version.Split(".");
+
+           string versionStr = versionArr[2];
+
+           return versionStr;
+       }
+   }
+}
+
+===============================================================================================================================
+
+Get SubReddit  
+
+Solution provided by th course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           string url = @"https://www.reddit.com/r/funny/";
+
+           string subreddit = GetSubReddit(url);
+
+           Console.WriteLine($"The subreddit is {subreddit}.");
+       }
+
+       private static string GetSubReddit(string url)
+       {
+           string[] urlArr = url.Split("https://www.reddit.com/r/");
+
+           urlArr[1] = urlArr[1].Replace("/", "");
+
+           string subreddit = urlArr[1];
+
+           return subreddit;
+       }
+   }
+}
+
+=========================================================================================================================
+
+Invert Boolean  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {  // Invert Boolean  
+
+
+            bool bvalue = true;
+
+            Console.WriteLine($"The Inversion of {bvalue} is {InvertBool(bvalue)}.");
+        }
+
+        static bool InvertBool(bool val)
+        {
+            return !val;
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           bool expression = false;
+           bool invertedExpression =InvertBoolean(expression);
+
+           Console.WriteLine(invertedExpression);
+       }
+
+       private static bool InvertBoolean(bool expression)
+       {
+           return !expression;
+       }
+   }
+}
+
+=======================================================================================================
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {  // Is Number Less Than Zero  
+
+
+            int num = 9;
+
+            Console.WriteLine($"The number {num} is greater than zero {IsGreaterThanZero(num)}.");
+        }
+
+        static bool IsGreaterThanZero(int val)
+        {
+            return (val > 0);
+        }
+    }
+}
+
+Solution provided by the course
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int number = -2;
+
+           bool expression = IsNumberLessThanZero(number);
+
+           if (expression)
+           {
+               Console.WriteLine($"{number} is Less than 0.");
+           }
+           else
+           {
+               Console.WriteLine($"{number} is greater than 0.");
+           }
+       }
+
+       private static bool IsNumberLessThanZero(int number)
+       {
+           bool expression = false;
+           if (number < 0)
+           {
+               expression = true;
+           }
+           return expression;
+       }
+   }
+
+===============================================================================================================================
+
+Logical OR 
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {  // Logical OR   
+
+
+            int num1 = 0;
+            int num2 = 1;
+
+            Console.WriteLine($"The logical OR for {num1}  and {num2} is {GetLogicalOR(num1, num2)}.");
+        }
+
+        static bool GetLogicalOR(int val1, int val2)
+        {
+            bool boolOne = Convert.ToBoolean(val1);
+            bool boolTwo = Convert.ToBoolean(val2);
+            return (boolOne || boolTwo);
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           int numberOne = 1;
+           int numberTwo = 0;
+
+           bool expression = OR(numberOne, numberTwo);
+
+           Console.WriteLine(expression);
+       }
+
+       private static bool OR(int numberOne, int numberTwo)
+       {
+           bool boolNumOne = Convert.ToBoolean(numberOne);
+           bool boolNumTwo = Convert.ToBoolean(numberTwo);
+           return boolNumOne || boolNumTwo;
+       }
+   }
+}
+
+===================================================================================================================
+
+Calculate Perimeter Of Rectangle  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {  // Calculate Perimeter Of Rectangle  
+
+
+            int length1 = 5;
+            int width = 8;
+
+            Console.WriteLine($"The Primeter of the rectangl  is {GetPerimeter(length1, width)}.");
+        }
+
+        static int GetPerimeter(int len1, int wid2)
+        {
+            return ((len1 * 2) + (wid2 * 2));
+        }
+    }
+}
+
+Solution provided by the course: 
+
+using System;
+
+namespace ConsoleApp
+{
+   internal class Program
+   {
+       private static void Main(string[] args)
+       {
+           double length = 15.5;
+           double width = 10.3;
+
+           double perimeterOfRectangle = PerimeterOfRectangle(length, width);
+
+           Console.WriteLine($"The perimeter of this rectangle is {perimeterOfRectangle}.");
+       }
+
+       private static double PerimeterOfRectangle(double length, double width)
+       {
+           double perimeter = 2 * (length + width);
+
+           return perimeter;
+       }
+   }
+}
+
+==========================================================================================================================
+
+
+Write A Function To Calculate The Tip Amount  using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {  // Write A Function To Calculate The Tip Amount  
+
+
+            decimal bill = 25.98m;
+            
+            Console.WriteLine($"The tip for bill {bill} is {GetTip(bill)}.");
+        }
+
+        static decimal GetTip(decimal bill)
+        {
+            decimal tipPercent = 0.18m;
+            return (bill * tipPercent);
+        }
+    }
+}
+
+Solution povided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           double totalBillAmount = 10.00;
+           double desiredTipAmount = 0.15;
+
+           double tipAmount = GetTipAmount(totalBillAmount, desiredTipAmount);
+
+           Console.WriteLine($"Tip Amount: {tipAmount}");
+       }
+
+       static double GetTipAmount(double totalAmount, double tipPercentage)
+       {
+
+           double tipAmount = totalAmount * tipPercentage;
+
+           return tipAmount;
+       }
+   }
+}
+
+==========================================================================================================================
+
+Format A Phone Number  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        enum PhoneFormat
+        {
+            Dashes,
+            Parenthesis
+        }
+        static void Main(string[] args)
+        {  // Format a phone number
+
+            string phoneNumber = "13019174236";
+
+            Console.WriteLine($"The formatted string is:  {FormatNumber(PhoneFormat.Parenthesis, phoneNumber)}");
+            static string FormatNumber(PhoneFormat format, string num)
+            {
+                if ((num.Length != 11) || (num[0].Equals("1")))
+                {
+                    Console.WriteLine("The phone number cannot be processed by the function");
+                    return num;
+                }
+
+                if (format == PhoneFormat.Dashes)
+                {
+                    string sub1 = num[0] + "-";
+                    string sub2 = "";
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        sub2 += num[i];
+                    }
+                    sub2 = sub2 + "-";
+                    string sub3 = "";
+                    for (int i = 4; i <= 6; i++)
+                    {
+                        sub3 += num[i];
+                    }
+                    sub3 = sub3 + "-";
+                    string sub4 = "";
+                    for (int i = 7; i <= 10; i++)
+                    {
+                        sub4 += num[i];
+                    }
+                    string sub5 = sub1 + sub2 + sub3 + sub4;
+                    num = sub5;
+                }
+
+                if (format == PhoneFormat.Parenthesis)
+                {
+                    string sub1 = num[0] + "";
+                    string sub2 = "";
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        sub2 += num[i];
+                    }
+                    sub2 = "(" + sub2 + ")";
+                    string sub3 = "";
+                    for (int i = 4; i <= 6; i++)
+                    {
+                        sub3 += num[i];
+                    }
+                    sub3 = sub3 + "-";
+                    string sub4 = "";
+                    for (int i = 7; i <= 10; i++)
+                    {
+                        sub4 += num[i];
+                    }
+                    string sub5 = sub1 + sub2 + sub3 + sub4;
+                    num = sub5;
+                }
+                return num;
+
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private enum NumberFormat
+        {
+            Dashes,
+            Parentheses
+        }
+
+        private static void Main(string[] args)
+        {
+            string phoneNumber = "10123456789";
+
+            string phoneNumberWithDashes = FormatPhoneNumber(NumberFormat.Dashes, phoneNumber);
+
+            Console.WriteLine($"Phone number with Dashes : {phoneNumberWithDashes}");
+
+            string phoneNumberWithParentheses = FormatPhoneNumber(NumberFormat.Parentheses, phoneNumber);
+
+            Console.WriteLine($"Phone number with Parentheses : {phoneNumberWithParentheses}");
+
+            string shortPhoneNumber = FormatPhoneNumber(NumberFormat.Parentheses, "12344444");
+
+            Console.WriteLine($"Short phone number : {shortPhoneNumber}");
+
+            string internationalNumber = FormatPhoneNumber(NumberFormat.Parentheses, "886466423221");
+
+            Console.WriteLine($"International number with dashes : {internationalNumber}");
+
+        }
+
+        private static string FormatPhoneNumber(NumberFormat numberFormat, string phoneNumber)
+        {
+            if (!phoneNumber.StartsWith('1') || phoneNumber.Length != 11)
+            {
+                return phoneNumber;
+            }
+
+            string formattedPhoneNumber = "";
+            int counter = 0;
+
+            if (numberFormat == NumberFormat.Dashes)
+            {
+                foreach (char c in phoneNumber)
+                {
+                    if (counter == 1 || counter == 4 || counter == 7)
+                    {
+                        formattedPhoneNumber += "-";
+                    }
+                    formattedPhoneNumber += c.ToString();
+                    counter++;
+                }
+            }
+
+            if (numberFormat == NumberFormat.Parentheses)
+            {
+                foreach (char c in phoneNumber)
+                {
+                    if (counter == 0)
+                    {
+                        formattedPhoneNumber += "+";
+                    }
+                    if (counter == 1)
+                    {
+                        formattedPhoneNumber += "(";
+                    }
+
+                    if (counter == 4)
+                    {
+                        formattedPhoneNumber += ")";
+                    }
+
+                    if (counter == 7)
+                    {
+                        formattedPhoneNumber += "-";
+                    }
+
+                    formattedPhoneNumber += c.ToString();
+
+                    counter++;
+                }
+            }
+
+            return formattedPhoneNumber;
+        }
+    }
+}
+
+==================================================================================================================================
+
+Reverse a word
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {  // Reverse A Word
+
+            string word = "difficult";
+            string word2 = ReverseWord(word);
+
+            string ReverseWord(string word1)
+            {
+                string revWord = "";
+                for (int i = (word1.Length - 1); i >= 0; i--)
+                {
+                    revWord += word1[i];
+                }
+                return revWord;
+            }
+              Console.WriteLine(word);
+              Console.WriteLine(word2); 
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string originalWord = "Developer";
+            string reversedWord = ReverseWord(originalWord);
+            Console.WriteLine($"The reversed word : is {reversedWord}");
+        }
+
+
+        static string ReverseWord(string word)
+        {
+            string reversedWord = "";
+
+            for (int i = word.Length - 1; i >= 0; i--)
+            {
+                reversedWord += word[i].ToString();
+            }
+
+            return reversedWord;
+        }
+    }
+}
+
+================================================================================================================================
+
+Repeating Letters N Times  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {  // Repeating Letters N Times  
+
+            string word = "Mississippi";
+            int count = 5;
+            string word2 = "";
+
+            word2 = LetterMultiple(word, count);
+
+            string LetterMultiple(string word1, int count)
+            {
+                string str1 = "";
+                for (int i = 0; i < (word.Length - 1); i++)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        str1 += word[i];
+                    }
+                }
+
+                return str1;
+            }
+
+            Console.WriteLine(word2);
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string wordOne = "pet";
+
+            string mutatedWord = LetterMultify(wordOne, 5);
+
+            Console.WriteLine($"Word multified : {mutatedWord}");
+
+            string wordTwo = "John";
+            mutatedWord = LetterMultify(wordTwo, 3);
+
+            Console.WriteLine($"Word multified : {mutatedWord}");
+        }
+
+        public static string LetterMultiple(char letter, int value)
+        {
+            string multifiedWord = "";
+
+            
+            for (int i = 0; i < value; i++)
+            {
+                multifiedWord += letter;
+            }
+            
+
+            return multifiedWord;
+        }
+    }
+}
+
+===============================================================================================================================
+
+Retrieve The Min And Max Values From An Array  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] valueList = new[] { 12, 34, 43, 45, 66, 76, 6, 87, 9, 101, 323, 88 };
+
+            int minVal = MinimumValue(valueList);
+            int maxVal = MaximumValue(valueList);
+
+            int MinimumValue(int[] list)
+            {
+                int minVal = list[0];
+                foreach (int digit in list)
+                {
+                    if (digit < minVal)
+                    {
+                        minVal = digit;
+                    }
+                }
+                return minVal;
+            }
+
+            int MaximumValue(int[] list)
+            {
+                int maxVal = 0;
+                foreach (int digit in list)
+                {
+                    if (digit > maxVal)
+                    {
+                        maxVal = digit;
+                    }
+                }
+                return maxVal;
+            }
+
+            Console.WriteLine($"The minimum value is:  {minVal} an the maximun value is:  {maxVal}");
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            int[] minMaxArray = MinMaxArrayGenerator(new int[] { 1, 2, 3, 4, 5, 6, 7 });
+
+            int min = minMaxArray[0];
+            int max = minMaxArray[1];
+
+            Console.WriteLine($"The Min value of the array is {min}");
+            Console.WriteLine($"The Max value of the array is {max}");
+        }
+
+        private static int[] MinMaxArrayGenerator(int[] values)
+        {
+            int min = int.MaxValue;
+            int max = int.MinValue;
+
+            foreach (int value in values)
+            {
+                if (value > max)
+                {
+                    max = value;
+                }
+
+                if (value < min)
+                {
+                    min = value;
+                }
+            }
+
+            return new int[] { min, max };
+        }
+    }
+}
+
+=================================================================================================================================
+
+
+Check If A String A Palindrome  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {  // Retrieve The Min And Max Values From An Array  string word = "toilet";
+            string word = "straight";
+
+            bool isTrue = IsPalindrome(word);
+
+            bool IsPalindrome(string word1)
+            {
+                string word2 = "";
+                for (int i = (word1.Length - 1); i >= 0; i--)
+                {
+                    word2 += word1[i];
+                }
+                if (word2 == word1)
+                {
+                    Console.WriteLine($"{word1} is a palindrome");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine($"{word1} is not a palindrome");
+                    return false;
+                }
+            }
+        }
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string notPalindrome = "potato";
+            bool result = IsPalindrome(notPalindrome);
+            Console.WriteLine($"Is {notPalindrome} a palindrome : {result}");
+
+            string palindrome = "mom";
+            result = IsPalindrome(palindrome);
+            Console.WriteLine($"Is {palindrome} a palindrome : {result}");
+        }
+
+        private static bool IsPalindrome(string word)
+        {
+            char[] array = word.ToCharArray();
+
+            Array.Reverse(array);
+
+            string reversedWord = new(array);
+
+            return reversedWord.Equals(word);
+        }
+    }
+}
+
+==============================================================================================================================
+
+Count Letter Occurrences Of A Letter In A Sentence  
+
+using System;
+
+namespace C_SharpFunctionsCourse
+{
+    internal class Program
+    {
+        public static void Main(string[] args)
+        {  // Count Letter Occurrences Of A Letter In A Sentence  
+            string word = "Mississippi Massacre";
+            char letter = 's';
+
+            int letterCount = LetterCount(word, letter);
+
+            Console.WriteLine($"The number of occurences of {letter} in {word} is {letterCount}");
+
+            static int LetterCount(string word1, char letter1)
+            {
+                int counter = 0;
+                foreach (char let in word1)
+                {
+                    if (let == letter1)
+                    {
+                        counter += 1;
+                    }
+                }
+
+                return counter;
+            }
+        }
+        
+    }
+}
+
+Solution provided by the course:
+
+using System;
+
+namespace ConsoleApp
+{
+    internal class Program
+    {
+        private static void Main(string[] args)
+        {
+            string sentence = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+
+            char letter = 'i';
+
+            int numberOfLetterOccurences = GetNumberOfLetterOccurrencesInSentence(sentence, letter);
+
+            Console.WriteLine($"{letter} occurs : {numberOfLetterOccurences} times in this sentence.");
+        }
+
+        private static int GetNumberOfLetterOccurrencesInSentence(string sentence, char letter)
+        {
+            int totalLetters = 0;
+
+            foreach (char value in sentence)
+            {
+                totalLetters += value == letter ? 1 : 0;
+            }
+
+            return totalLetters;
+        }
+    }
+}
+
+============================================================================Calculate The Mean Of An Enumerable  ====================================================
+
+
+Calculate The Mean Of An Enumerable  
+
